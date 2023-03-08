@@ -1,3 +1,5 @@
+var num = 0;
+
 function getComputerChoice() {
     choice = ["rock", "paper", "scissors"]
     return choice[Math.floor(Math.random() * 3)];
@@ -11,8 +13,10 @@ function playRound(playerSelection, computerSelection) {
             return "Tie! Both " + playerSelection
         }
         else if (computerSelection == "scissors") {
+            num++;
             return "Win! " + playerSelection + " beats " + computerSelection
         } else {
+            num--;
             return "Lose! " + computerSelection + " beats " + playerSelection
         }
     }
@@ -21,8 +25,10 @@ function playRound(playerSelection, computerSelection) {
             return "Tie! Both " + playerSelection
         }
         else if (computerSelection == "paper") {
+            num++;
             return "Win! " + playerSelection + " beats " + computerSelection
         } else {
+            num--;
             return "Lose! " + computerSelection + " beats " + playerSelection
         }
     }
@@ -31,8 +37,10 @@ function playRound(playerSelection, computerSelection) {
             return "Tie! Both " + playerSelection
         }
         else if (computerSelection == "rock") {
+            num++;
             return "Win! " + playerSelection + " beats " + computerSelection
         } else {
+            num--;
             return "Lose! " + computerSelection + " beats " + playerSelection
         }
     }
@@ -45,6 +53,8 @@ function game() {
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
     }
+    const result = num > 0 ? "you" : num < 0 ? "the computer" : "neither, a tie";
+    console.log(`The winner is ${result}!`);
 }
 
 game()
